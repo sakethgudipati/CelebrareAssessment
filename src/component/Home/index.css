@@ -1,6 +1,6 @@
 .home-bg-container {
   background-color: beige;
-  padding: 250px;
+  padding: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,7 @@
 .home-head {
   font-family: 'Bree Serif';
   font-size: 40px;
+  text-align: center;
 }
 .home-button {
   padding-top: 10px;
@@ -21,4 +22,8 @@
   border-width: 0px;
   color: white;
   cursor: pointer;
+  margin-top: 30px;
+}
+.head-span {
+  color: red;
 }

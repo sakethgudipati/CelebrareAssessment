@@ -3,7 +3,11 @@ import './index.css'
 
 const Home = () => (
   <div className="home-bg-container">
-    <h1 className="home-head">Simple Editor</h1>
+    <h1 className="home-head">
+      Welcome, myself <span className="head-span">Gudipati Saketh Kasyap</span>.
+      Let me show you my Celebrare Assignment which is a{' '}
+      <span className="head-span">Simple Text Editor</span>.
+    </h1>
     <Link to="/editor">
       <button type="button" className="home-button">
         Get Started

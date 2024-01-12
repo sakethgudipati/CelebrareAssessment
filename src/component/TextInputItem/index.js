@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Draggable from 'react-draggable'
-import {InputItem} from './styledComponents'
+import {InputItem, InputItem2} from './styledComponents'
 import './index.css'
 
 class TextInputItem extends Component {
@@ -14,6 +14,7 @@ class TextInputItem extends Component {
       x: -400,
       y: 200,
     },
+    inputEl: '',
   }
 
   handleDrag = (e, ui) => {
@@ -80,7 +81,12 @@ class TextInputItem extends Component {
     this.onStop()
   }
 
+  onChangeInput = event => {
+    this.setState({inputEl: event.target.value})
+  }
+
   render() {
+    const {inputEl} = this.state
     const {inputInfo, onActiveInput, isActive, color, font, size} = this.props
     const {id} = inputInfo
     const dragHandlers = {onStart: this.onStart, onStop: this.onStop}
@@ -89,18 +95,46 @@ class TextInputItem extends Component {
     }
 
     return (
-      <Draggable {...dragHandlers}>
-        <li type="button" className="input-button" onClick={onMakeInputActive}>
-          <InputItem
-            type="text"
-            placeholder="Enter Text"
-            color={color}
-            font={font}
-            size={size}
-            isActive={isActive}
-          />
-        </li>
-      </Draggable>
+      <>
+        {isActive ? (
+          <Draggable {...dragHandlers}>
+            <li
+              type="button"
+              className="input-button"
+              onClick={onMakeInputActive}
+            >
+              <InputItem
+                type="text"
+                placeholder="New Text"
+                value={inputEl}
+                color={color}
+                font={font}
+                size={size}
+                isActive={isActive}
+                onChange={this.onChangeInput}
+              />
+            </li>
+          </Draggable>
+        ) : (
+          <Draggable {...dragHandlers}>
+            <li
+              type="button"
+              className="input-button"
+              onClick={onMakeInputActive}
+            >
+              <InputItem2
+                type="text"
+                placeholder="New Text"
+                value={inputEl}
+                color={color}
+                font={font}
+                size={size}
+                isActive={isActive}
+              />
+            </li>
+          </Draggable>
+        )}
+      </>
     )
   }
 }
